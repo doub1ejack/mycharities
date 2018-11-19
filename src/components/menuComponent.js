@@ -50,7 +50,14 @@ class Menu extends Component {
 			return(
 				<div key={d.id} className="col-12 mt-5">
 					<Media tag="li">
-
+						<Media left middle>
+							<Media object src={d.image} alt={d.name} />
+						</Media>
+						<Media body className="ml-5">
+							<Media heading>{d.name}</Media>
+							<p>{d.description}</p>
+						</Media>
+					</Media>
 				</div>
 			);
 		});
