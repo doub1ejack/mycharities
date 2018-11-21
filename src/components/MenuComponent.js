@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardImg, CardText, CardBody, CardTitle, Row, Container, CardImgOverlay} from 'reactstrap';
+import {Card, CardImg, CardText, CardBody, CardTitle, Row, Col, Container, CardImgOverlay} from 'reactstrap';
 
 class Menu extends Component {
 
@@ -14,7 +14,7 @@ class Menu extends Component {
 		this.setState( {selectedDish: dish} );
 	}
 
-	renderDish(d) {
+	renderSelectedDish(d) {
 		if(d != null) {
 			return(
 				<Card>
@@ -27,7 +27,11 @@ class Menu extends Component {
 			)
 		}
 		else {
-			return(<div/>);
+			return(
+				<div style={{width: "100%", fontSize: 30, backgroundColor: "#eee", padding: 10, textAlign: "center"}} >
+					Click a menu item for details
+				</div>
+			);
 		}
 	}
 
@@ -35,15 +39,12 @@ class Menu extends Component {
 
 		const menuCards = this.props.dishes.map( (d) => {
 			return(
-				<div key={d.id} className="col-12 col-md-5 m-3">
+				<div key={d.id} className="col-md-6" style={{padding: 20}}>
 					<Card onClick={ ( ) => {this.onDishSelect(d)} }>
 						<CardImg top src={d.image} alt={d.description} />
 						<CardImgOverlay>
 							<CardTitle>{d.name}</CardTitle>
 						</CardImgOverlay>
-						<CardBody>
-							<CardText>{d.description}</CardText>
-						</CardBody>
 					</Card>
 				</div>
 			);
@@ -52,10 +53,17 @@ class Menu extends Component {
 		return(
 			<Container>
 				<Row>
-					{menuCards}
-				</Row>
-				<Row>
-					{this.renderDish(this.state.selectedDish)}
+					{/* menu item grid */}
+					<Col md={7}>
+						<Row>
+							{menuCards}
+						</Row>
+					</Col>
+
+					{/* sidebar for selected dish */}
+					<Col md={5}  style={{padding: 20}}>
+						{this.renderSelectedDish(this.state.selectedDish)}
+					</Col>
 				</Row>
 			</Container>
 		);
