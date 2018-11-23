@@ -28,7 +28,7 @@ class Menu extends Component {
 		}
 		else {
 			return(
-				<div style={{width: "100%", fontSize: 30, backgroundColor: "#eee", padding: 10, textAlign: "center"}} >
+				<div className="p-3" style={{width: "100%", fontSize: 30, backgroundColor: "#eee", textAlign: "center"}} >
 					Click a menu item for details
 				</div>
 			);
@@ -39,7 +39,7 @@ class Menu extends Component {
 
 		const menuCards = this.props.dishes.map( (d) => {
 			return(
-				<div key={d.id} className="col-md-6" style={{padding: 20}}>
+				<div key={d.id} className="col-md-6 p-3">
 					<Card onClick={ ( ) => {this.onDishSelect(d)} }>
 						<CardImg top src={d.image} alt={d.description} />
 						<CardImgOverlay>
