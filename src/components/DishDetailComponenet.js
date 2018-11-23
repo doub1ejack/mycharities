@@ -9,6 +9,21 @@ class DishDetail extends Component {
 
 	}
 
+	renderComments(comments) {
+		const renderedComments = comments.map( (c) => {
+			return(
+				<div>{c.author}</div>
+			)
+		});
+
+		return(
+			<div className="mt-3">
+				<strong>Reviews</strong>
+				{renderedComments}
+			</div>
+		);
+	}
+
 	render() {
 		let { dish } = this.props;
 
@@ -17,7 +32,7 @@ class DishDetail extends Component {
 				<CardImg top src={dish.image} alt={dish.description} />
 				<CardBody>
 					<CardTitle>{dish.name}</CardTitle>
-					<CardText>{dish.description}</CardText>
+					<CardText>{dish.description}<br/>{this.renderComments(dish.comments)}</CardText>
 				</CardBody>
 			</Card>
 		)
