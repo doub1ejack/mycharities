@@ -1,18 +1,38 @@
 import React, { Component } from "react";
 import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap";
+import { IoIosStar, IoIosStarOutline} from 'react-icons/io';
 
 
 class DishDetail extends Component {
 
 	constructor(props) {
 		super(props);
+	}
 
+	renderStars(stars){
+		const starList = [];
+		const starIcon = (outline) => { return outline ? <IoIosStarOutline color={"goldenrod"} /> : <IoIosStar color={"goldenrod"} /> }
+
+		for(let i=0; i<5; i++){
+			if(i<stars) {
+				starList.push( starIcon(false) );
+			}
+			else {
+				starList.push( starIcon(true) );
+			}
+		}
+
+		return(starList);
 	}
 
 	renderComments(comments) {
 		const renderedComments = comments.map( (c) => {
 			return(
-				<div>{c.author}</div>
+				<React.Fragment>
+					<div>
+						{this.renderStars(c.rating)} - {c.author}
+					</div>
+				</React.Fragment>
 			)
 		});
 
