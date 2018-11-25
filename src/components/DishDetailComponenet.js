@@ -7,6 +7,17 @@ class DishDetail extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			aveRating: this.getAverageRating(),
+		}
+	}
+
+	getAverageRating(){
+		const comments = this.props.dish.comments;
+		const totalStars = comments.reduce( (total, comment) => { return total + comment.rating; }, 0);
+		const averageStars = totalStars / (comments.length + 1);
+
+		return Math.round(averageStars);
 	}
 
 	renderStars(stars){
@@ -38,7 +49,8 @@ class DishDetail extends Component {
 
 		return(
 			<div className="mt-3">
-				<strong>Reviews</strong>
+				{/* TODO: how to keep averageRating in State, and have it update onChange */}
+				<strong>Reviews {this.renderStars(this.getAverageRating())}</strong>
 				{renderedComments}
 			</div>
 		);
