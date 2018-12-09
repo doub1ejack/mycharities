@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap";
+import { Button, Card, CardImg, CardBody, CardTitle, CardText, Collapse } from "reactstrap";
 import { IoIosStar, IoIosStarOutline} from 'react-icons/io';
 
 
@@ -7,8 +7,10 @@ class DishDetail extends Component {
 
 	constructor(props) {
 		super(props);
+		this.toggleRatings = this.toggleRatings.bind(this);
 		this.state = {
 			aveRating: this.getAverageRating(),
+			showRatings: false,
 		}
 	}
 
@@ -18,6 +20,10 @@ class DishDetail extends Component {
 		const averageStars = totalStars / (comments.length + 1);
 
 		return Math.round(averageStars);
+	}
+
+	toggleRatings(){
+		this.setState({showRatings: !this.state.showRatings})
 	}
 
 	renderStars(stars){
@@ -50,8 +56,13 @@ class DishDetail extends Component {
 		return(
 			<div className="mt-3">
 				{/* TODO: how to keep averageRating in State, and have it update onChange */}
-				<strong>Reviews {this.renderStars(this.getAverageRating())}</strong>
-				{renderedComments}
+				<p><strong>Reviews {this.renderStars(this.getAverageRating())}</strong></p>
+				<Button outline color="primary" size="sm" onClick={this.toggleRatings} style={{ marginBottom: '1rem' }}>
+					{ (this.state.showRatings) ? "Hide Reviews" : "Read Reviews" }
+				</Button>
+				<Collapse isOpen={this.state.showRatings}>
+					{renderedComments}
+				</Collapse>
 			</div>
 		);
 	}
