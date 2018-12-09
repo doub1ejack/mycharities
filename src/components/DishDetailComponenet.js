@@ -63,7 +63,14 @@ class DishDetail extends Component {
 			<Card>
 				<CardImg top src={dish.image} alt={dish.description} />
 				<CardBody>
-					<CardTitle>{dish.name}</CardTitle>
+					<CardTitle style={{
+								fontFamily: "fantasy",
+								fontWeight: "bold",
+								background: "#d3d3d3ab",
+								textAlign: "center",
+								padding: "10px",
+								borderRadius: "5px",
+							}}>{dish.name}</CardTitle>
 					<CardText>{dish.description}<br/>{this.renderComments(dish.comments)}</CardText>
 				</CardBody>
 			</Card>
