@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, CardImg, CardBody, CardTitle, CardText, Collapse } from "reactstrap";
-import { IoIosStar, IoIosStarOutline} from 'react-icons/io';
+import DishComment from "./DishComment";
+import StarRating from "./common/StarRating";
 
 
 class DishDetail extends Component {
@@ -26,37 +27,19 @@ class DishDetail extends Component {
 		this.setState({showRatings: !this.state.showRatings})
 	}
 
-	renderStars(stars){
-		const starList = [];
-		const starIcon = (outline) => { return outline ? <IoIosStarOutline color={"goldenrod"} /> : <IoIosStar color={"goldenrod"} /> }
-
-		for(let i=0; i<5; i++){
-			if(i<stars) {
-				starList.push( starIcon(false) );
-			}
-			else {
-				starList.push( starIcon(true) );
-			}
-		}
-
-		return(starList);
-	}
-
 	renderComments(comments) {
 		const renderedComments = comments.map( (c) => {
-			return(
-				<React.Fragment>
-					<div>
-						{this.renderStars(c.rating)} - {c.author}
-					</div>
-				</React.Fragment>
-			)
+			return(<DishComment comment={c} key={c.id}/>)
 		});
 
 		return(
 			<div className="mt-3">
 				{/* TODO: how to keep averageRating in State, and have it update onChange */}
-				<p><strong>Reviews {this.renderStars(this.getAverageRating())}</strong></p>
+				<p>
+					<strong>
+						Reviews <StarRating rating={this.getAverageRating()} />
+					</strong>
+				</p>
 				<Button outline color="primary" size="sm" onClick={this.toggleRatings} style={{ marginBottom: '1rem' }}>
 					{ (this.state.showRatings) ? "Hide Reviews" : "Read Reviews" }
 				</Button>
