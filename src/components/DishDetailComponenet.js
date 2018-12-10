@@ -42,12 +42,12 @@ class DishDetail extends Component {
 				{/* TODO: how to keep averageRating in State, and have it update onChange */}
 				<p>
 					<strong>
-						Reviews <StarRating rating={this.getAverageRating()} />
+						Average Rating <StarRating rating={this.getAverageRating()} />
 					</strong>
+					<Button outline className="float-right" color="primary" size="sm" onClick={this.toggleRatings} style={{ marginBottom: '1rem' }}>
+						{ (this.state.showRatings) ? "Hide Reviews" : "Read Reviews" }
+					</Button>
 				</p>
-				<Button outline color="primary" size="sm" onClick={this.toggleRatings} style={{ marginBottom: '1rem' }}>
-					{ (this.state.showRatings) ? "Hide Reviews" : "Read Reviews" }
-				</Button>
 				<Collapse isOpen={this.state.showRatings}>
 					{renderedComments}
 				</Collapse>
@@ -59,6 +59,7 @@ class DishDetail extends Component {
 		let { dish } = this.props;
 
 		return(
+			<div>
 			<Card>
 				<CardImg top src={dish.image} alt={dish.description} />
 				<CardBody>
@@ -70,9 +71,11 @@ class DishDetail extends Component {
 								padding: "10px",
 								borderRadius: "5px",
 							}}>{dish.name}</CardTitle>
-					<CardText>{dish.description}<br/>{this.renderComments(dish.comments)}</CardText>
+					<CardText>{dish.description}</CardText>
 				</CardBody>
 			</Card>
+			{this.renderComments(dish.comments)}
+		</div>
 		)
 	}
 }

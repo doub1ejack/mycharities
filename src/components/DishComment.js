@@ -16,8 +16,10 @@ constructor(props){
 render(){
     const comment = this.props.comment;
     return(
-        <div>
-            <StarRating rating={comment.rating} /> - {comment.author}
+        <div style={{paddingLeft: "1em", border: "1px solid #ececec", borderLeft: "3px solid lightgrey", marginBottom: "1em"}}>
+            <StarRating rating={comment.rating} /> - 
+            <span style={{color: "grey", fontVariant: "small-caps", fontSize: "small", marginLeft: ".5em"}}>{comment.author}</span>
+            <p>{comment.comment}</p>
         </div>
     );
 }
