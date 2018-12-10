@@ -12,17 +12,20 @@ class StarRating extends Component {
     // Uses the provided number of stars and pads with empty stars.
 	renderStars(stars){
 		const starList = [];
+        let outline = false;
 
 		for(let i=0; i<5; i++){
-            starList.push( this.starIcon( (i<stars) ? false : true ) );
+            outline = (i<stars) ? false : true
+            starList.push( this.starIcon( outline, i ) );
 		}
 
 		return(starList);
     }
 
     // Returns either an outlined star, or a filled star
-    starIcon(outline) { 
-        return outline ? <IoIosStarOutline color={"goldenrod"} /> : <IoIosStar color={"goldenrod"} /> 
+    starIcon(outline, key) { 
+        const s = {verticalAlign: "text-top"}
+        return outline ? <IoIosStarOutline key={key} color={"#b3b3b3"} style={s} /> : <IoIosStar key={key} color={"goldenrod"} style={s} /> 
     }
     
     // Component Render()
