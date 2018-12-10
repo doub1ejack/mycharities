@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {Card, CardImg, CardText, CardBody, CardTitle, Row, Col, Container, CardImgOverlay} from 'reactstrap';
 import DishDetail from './DishDetailComponenet';
 
 class Menu extends Component {
+
+	static propTypes = {
+		dishes: PropTypes.array,
+	}
 
 	constructor(props) {
 		super(props);

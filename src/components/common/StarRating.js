@@ -1,7 +1,12 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
 import { IoIosStar, IoIosStarOutline} from 'react-icons/io';
 
 class StarRating extends Component {
+
+    static propTypes = {
+        rating: PropTypes.number,
+    };
 
     // Renders a five star review.
     // Uses the provided number of stars and pads with empty stars.

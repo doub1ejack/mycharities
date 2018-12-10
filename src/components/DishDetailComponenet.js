@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { Button, Card, CardImg, CardBody, CardTitle, CardText, Collapse } from "reactstrap";
 import DishComment from "./DishComment";
 import StarRating from "./common/StarRating";
 
 
 class DishDetail extends Component {
+
+	static propTypes = {
+		dish: PropTypes.object,
+	};
 
 	constructor(props) {
 		super(props);
