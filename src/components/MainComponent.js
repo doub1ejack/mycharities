@@ -18,11 +18,17 @@ class Main extends Component {
 
 	render() {
 		return (
-			<div>
+			<div style={{
+				backgroundImage: "url(https://media.appycouple.com/t/k9mv32065n.jpg)",
+				backgroundSize: "cover",
+				height: "100vh"
+				}}>
 
-				<Navbar dark color="primary">
+				<Navbar style={{    backgroundColor: "white", borderBottom: "3px solid lightgray"}}>
 					<div className="container">
-						<NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+						<NavbarBrand href="http://www.ninaandmicah.com/registry/" style={{color: "grey"}}>
+							&lt; back to ninaandmicah.com
+						</NavbarBrand>
 					</div>
 				</Navbar>
 

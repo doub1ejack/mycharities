@@ -44,9 +44,9 @@ class Menu extends Component {
 						<CardImg top src={d.image} alt={d.description} />
 						<CardImgOverlay>
 							<CardTitle style={{
-								fontFamily: "fantasy",
+								fontFamily: "sans-serif",
 								fontWeight: "bold",
-								background: "#d3d3d3ab",
+								background: "#ffffffcc",
 								textAlign: "center",
 								padding: "10px",
 								borderRadius: "5px",
@@ -58,7 +58,11 @@ class Menu extends Component {
 		});
 
 		return(
-			<Container>
+			<Container style={{ 
+				backgroundColor: "#ffffff99", 
+				padding: "40px",
+				height: "100vh"
+				}}>
 				<Row>
 					{/* menu item grid */}
 					<Col md={7}>

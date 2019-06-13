@@ -64,7 +64,7 @@ class DishDetail extends Component {
 				<CardImg top src={dish.image} alt={dish.description} />
 				<CardBody>
 					<CardTitle style={{
-								fontFamily: "fantasy",
+								fontFamily: "sans-serif",
 								fontWeight: "bold",
 								background: "#d3d3d3ab",
 								textAlign: "center",
