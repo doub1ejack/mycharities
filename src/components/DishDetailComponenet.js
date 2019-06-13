@@ -61,7 +61,7 @@ class DishDetail extends Component {
 		return(
 			<div>
 			<Card>
-				<CardImg top src={dish.image} alt={dish.description} />
+				<CardImg top src={dish.image} alt={dish.description}  style={{borderRadius:"7px"}}/>
 				<CardBody>
 					<CardTitle style={{
 								fontFamily: "sans-serif",
@@ -74,7 +74,10 @@ class DishDetail extends Component {
 					<CardText>{dish.description}</CardText>
 				</CardBody>
 			</Card>
-			{this.renderComments(dish.comments)}
+			{/* 
+				TODO: remove the comments entirely
+				{this.renderComments(dish.comments)} 
+			*/}
 		</div>
 		)
 	}
